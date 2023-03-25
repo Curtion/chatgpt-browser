@@ -1,14 +1,18 @@
 <script setup lang="ts">
+import { del } from '~/api'
 let modelValue = $ref('')
 function handleSendMsg() {
+  // TODO 如果正在回答则不允许再次发起提问
   if (!modelValue)
     return
   sendMsg(modelValue)
   modelValue = ''
 }
 
-function handleDelMsg() {
-
+async function handleDelMsg() {
+  const res = await del()
+  msgList.value = []
+  showToast(res.data.message)
 }
 </script>
 
