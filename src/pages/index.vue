@@ -1,5 +1,7 @@
 <script setup lang="ts" generic="T extends any, O extends any">
 import { marked } from 'marked'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/monokai-sublime.css'
 defineOptions({
   name: 'IndexPage',
 })
@@ -13,10 +15,14 @@ onMounted(() => {
 
 function parseMarkdown({ receive: text, loading }: msg) {
   const html = marked.parse(text)
-  if (!loading)
-    return html
   const div = document.createElement('div')
   div.innerHTML = html
+  const blocks = div.querySelectorAll('pre code')
+  blocks.forEach((block: any) => {
+    hljs.highlightBlock(block)
+  })
+  if (!loading)
+    return div.innerHTML
   getLastDeepestElement(div)?.classList.add('blink')
   return div.innerHTML
 }

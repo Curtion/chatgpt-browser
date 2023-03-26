@@ -12,6 +12,7 @@ specifiers:
   '@vueuse/core': ^9.13.0
   axios: ^1.3.4
   eslint: ^8.34.0
+  highlight.js: ^11.7.0
   jsdom: ^21.1.0
   marked: ^4.3.0
   pnpm: ^7.27.1
@@ -31,6 +32,7 @@ specifiers:
 dependencies:
   '@vueuse/core': 9.13.0_vue@3.2.47
   axios: 1.3.4
+  highlight.js: 11.7.0
   marked: 4.3.0
   vue: 3.2.47
   vue-router: 4.1.6_vue@3.2.47
@@ -3420,6 +3422,11 @@ packages:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
     dev: true
+
+  /highlight.js/11.7.0:
+    resolution: {integrity: sha512-1rRqesRFhMO/PRF+G86evnyJkCgaZFOI+Z6kdj15TA18funfoqJXvgPCLSf0SWq3SRfg1j3HlDs8o4s3EGq1oQ==}
+    engines: {node: '>=12.0.0'}
+    dev: false
 
   /hookable/5.4.2:
     resolution: {integrity: sha512-6rOvaUiNKy9lET1X0ECnyZ5O5kSV0PJbtA5yZUgdEF7fGJEVwSLSislltyt7nFwVVALYHQJtfGeAR2Y0A0uJkg==}
