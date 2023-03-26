@@ -25,14 +25,11 @@ if (!userInfo.value.token) {
       p-4
       shadow-md
       rounded-lg
-      opacity-0
       transition-opacity
       duration-500
       ease-in-out
-      class="w-60% left-50% translate-x--50%"
-    >
-      这里是提示文本
-    </div>
+      class="opacity-0 w-60% left-50% translate-x--50%"
+    />
   </main>
 </template>
 

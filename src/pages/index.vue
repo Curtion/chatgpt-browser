@@ -1,5 +1,4 @@
 <script setup lang="ts" generic="T extends any, O extends any">
-// TODO 需要支持markdown
 defineOptions({
   name: 'IndexPage',
 })
@@ -8,13 +7,6 @@ const el = ref<HTMLElement | null>(null)
 const { y } = useScroll(el)
 
 onMounted(() => {
-  const outerBox = document.querySelector('.outer-box') as HTMLElement
-  const innerBox = document.querySelector('.inner-box') as HTMLElement
-  innerBox.addEventListener('scroll', (event) => {
-    event.stopPropagation()
-    outerBox.scrollTop = innerBox.scrollTop
-  })
-  // TODO 滚动监听应该用委托的方式
   scrollBottom(y)
 })
 
@@ -57,9 +49,30 @@ watch(msgList, () => {
           {{ item.send }}
         </div>
         <div mt-2>
-          {{ item.receive }}
+          <span>{{ item.receive }}</span>
+          <span v-if="item.loading" class="blink" />
         </div>
       </li>
     </ul>
   </div>
 </template>
+
+<style scoped>
+.blink::after {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 20px;
+  background-color: #555454;
+  margin-left: 5px;
+  vertical-align: text-bottom;
+  line-height: 20px;
+  animation: blinker 1s infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+</style>

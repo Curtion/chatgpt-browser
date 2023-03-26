@@ -1,6 +1,5 @@
 import axios from 'axios'
 export const request = axios.create({
-  // TODO 更换服务器, 国内代理很卡
   baseURL: import.meta.env.VITE_API_BASE_URL,
   timeout: 20000,
 })

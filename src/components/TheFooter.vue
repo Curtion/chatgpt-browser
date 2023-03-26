@@ -1,15 +1,34 @@
 <script setup lang="ts">
+import { useMagicKeys } from '@vueuse/core'
 import { del } from '~/api'
+
 let modelValue = $ref('')
+
+const { enter } = useMagicKeys()
+
+watchEffect(() => {
+  if (enter.value)
+    handleSendMsg()
+})
+
+const isSending = computed(() => {
+  return msgList.value[msgList.value.length - 1]?.loading
+})
+
 function handleSendMsg() {
-  // TODO 如果正在回答则不允许再次发起提问
-  if (!modelValue)
+  if (isSending.value)
     return
+  if (!modelValue) {
+    showToast('请输入内容!')
+    return
+  }
   sendMsg(modelValue)
   modelValue = ''
 }
 
 async function handleDelMsg() {
+  if (isSending.value)
+    return
   const res = await del()
   msgList.value = []
   showToast(res.data.message)
@@ -33,7 +52,13 @@ async function handleDelMsg() {
     items-center
     gap-2
   >
-    <div text-xl hover:cursor-pointer i-carbon-trash-can @click="handleDelMsg" />
+    <div
+      text-xl
+      hover:cursor-pointer
+      i-carbon-trash-can
+      :class="[isSending ? 'hover:cursor-no-drop' : 'hover:cursor-pointer']"
+      @click="handleDelMsg"
+    />
     <input
       id="input"
       v-model="modelValue"
@@ -45,8 +70,13 @@ async function handleDelMsg() {
       max-w-screen-lg
       border="~ rounded gray-200 dark:gray-700"
       outline="none active:none"
+      placeholder="请输入内容"
     >
-    <div text-xl hover:cursor-pointer i-carbon-send @click="handleSendMsg" />
+    <div
+      text-xl
+      :class="[isSending ? 'i-carbon-close-outline' : 'i-carbon-send', isSending ? 'hover:cursor-no-drop' : 'hover:cursor-pointer']"
+      @click="handleSendMsg"
+    />
   </div>
   <div h-8 mt-2 shadow flex justify-center items-center text-xs>
     ©竹影流浪 2014-2023
