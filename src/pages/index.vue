@@ -1,4 +1,5 @@
 <script setup lang="ts" generic="T extends any, O extends any">
+import { marked } from 'marked'
 defineOptions({
   name: 'IndexPage',
 })
@@ -9,6 +10,31 @@ const { y } = useScroll(el)
 onMounted(() => {
   scrollBottom(y)
 })
+
+function parseMarkdown({ receive: text, loading }: msg) {
+  const html = marked.parse(text)
+  if (!loading)
+    return html
+  const div = document.createElement('div')
+  div.innerHTML = html
+  getLastDeepestElement(div)?.classList.add('blink')
+  return div.innerHTML
+}
+
+function getLastDeepestElement(root: Element): Element {
+  const children = root.children
+  if (children.length === 0)
+    return root
+
+  const status = Array.from(children).every((child: Element) => {
+    if (child.tagName === 'CODE')
+      return true
+    return false
+  })
+  if (status)
+    return root
+  return getLastDeepestElement(children[children.length - 1])
+}
 
 watch(msgList, () => {
   nextTick(() => {
@@ -32,38 +58,39 @@ watch(msgList, () => {
     m-auto
     of-y-auto
   >
-    <ul>
-      <li
-        v-for="(item, index) in msgList"
-        :key="index"
-        b-1
-        border-color="gray-200 dark:gray-700"
-        my-5
-        first:mt-0
-        last:mb-0
-        class="inner-box"
-        px-5
-        py-3
-      >
-        <div mb-2 c-blueGray>
-          {{ item.send }}
-        </div>
-        <div mt-2>
-          <span>{{ item.receive }}</span>
-          <span v-if="item.loading" class="blink" />
-        </div>
-      </li>
-    </ul>
+    <div
+      v-for="(item, index) in msgList"
+      :key="index"
+      b-1
+      border-color="gray-200 dark:gray-700"
+      my-5
+      first:mt-0
+      last:mb-0
+      class="inner-box"
+      px-5
+      py-3
+    >
+      <div mb-2 c-blueGray>
+        {{ item.send }}
+      </div>
+      <div mt-2>
+        <span
+          class="typo"
+          v-html="parseMarkdown(item)"
+        />
+        <div v-if="item.receive === ''" class="blink" />
+      </div>
+    </div>
   </div>
 </template>
 
-<style scoped>
+<style>
 .blink::after {
   content: '';
-  display: inline-block;
   width: 3px;
   height: 20px;
-  background-color: #555454;
+  background-color: #ccc;
+  display: inline-block;
   margin-left: 5px;
   vertical-align: text-bottom;
   line-height: 20px;

@@ -1,15 +1,7 @@
 <script setup lang="ts">
-import { useMagicKeys } from '@vueuse/core'
 import { del } from '~/api'
 
 let modelValue = $ref('')
-
-const { enter } = useMagicKeys()
-
-watchEffect(() => {
-  if (enter.value)
-    handleSendMsg()
-})
 
 const isSending = computed(() => {
   return msgList.value[msgList.value.length - 1]?.loading
@@ -71,6 +63,7 @@ async function handleDelMsg() {
       border="~ rounded gray-200 dark:gray-700"
       outline="none active:none"
       placeholder="请输入内容"
+      @keydown.enter="handleSendMsg"
     >
     <div
       text-xl

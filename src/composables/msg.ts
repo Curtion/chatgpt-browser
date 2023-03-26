@@ -1,9 +1,4 @@
 import { send } from '~/api'
-interface msg {
-  send: string
-  receive: string
-  loading: boolean
-}
 
 export const msgList = useStorage('msgList', [] as msg[])
 
@@ -21,7 +16,7 @@ export const sendMsg = async (msg: string) => {
         setTimeout(() => {
           msgList.value[msgList.value.length - 1].receive += res.data.message[i]
           resolve('')
-        }, 70)
+        }, 50)
       },
       )
     }
