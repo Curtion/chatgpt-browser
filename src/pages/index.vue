@@ -71,8 +71,9 @@ watch(msgList, () => {
       py-3
       rounded-md
     >
-      <div mb-2 c-blueGray>
-        {{ item.send }}
+      <div mb-2 c-blueGray flex items-center class="send">
+        <div>{{ item.send }}</div>
+        <div class="icon" hidden ml-2 i-carbon-restart @click="sendMsg(item.send)" />
       </div>
       <div mt-2>
         <span
@@ -84,6 +85,13 @@ watch(msgList, () => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.send:hover .icon {
+  display: inline-block;
+  cursor: pointer;
+}
+</style>
 
 <style>
 .blink::after {
