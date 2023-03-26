@@ -8,8 +8,10 @@ const isSending = computed(() => {
 })
 
 function handleSendMsg() {
-  if (isSending.value)
+  if (isSending.value) {
+    getController().abort('取消请求~')
     return
+  }
   if (!modelValue) {
     showToast('请输入内容!')
     return
@@ -67,8 +69,8 @@ async function handleDelMsg() {
     >
     <div
       text-xl
-      i-carbon-send
-      :class="[isSending ? 'hover:cursor-no-drop' : 'hover:cursor-pointer']"
+      :class="[isSending ? 'i-carbon-close-outline' : 'i-carbon-send']"
+      hover:cursor-pointer
       @click="handleSendMsg"
     />
   </div>

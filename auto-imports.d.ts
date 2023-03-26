@@ -36,6 +36,7 @@ declare global {
   const eagerComputed: typeof import('@vueuse/core')['eagerComputed']
   const effectScope: typeof import('vue')['effectScope']
   const extendRef: typeof import('@vueuse/core')['extendRef']
+  const getController: typeof import('./src/composables/controller')['getController']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const h: typeof import('vue')['h']
@@ -92,6 +93,7 @@ declare global {
   const resolveUnref: typeof import('@vueuse/core')['resolveUnref']
   const scrollBottom: typeof import('./src/composables/scroll')['scrollBottom']
   const sendMsg: typeof import('./src/composables/msg')['sendMsg']
+  const setController: typeof import('./src/composables/controller')['setController']
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
@@ -328,6 +330,7 @@ declare module 'vue' {
     readonly eagerComputed: UnwrapRef<typeof import('@vueuse/core')['eagerComputed']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
+    readonly getController: UnwrapRef<typeof import('./src/composables/controller')['getController']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly h: UnwrapRef<typeof import('vue')['h']>
@@ -384,6 +387,7 @@ declare module 'vue' {
     readonly resolveUnref: UnwrapRef<typeof import('@vueuse/core')['resolveUnref']>
     readonly scrollBottom: UnwrapRef<typeof import('./src/composables/scroll')['scrollBottom']>
     readonly sendMsg: UnwrapRef<typeof import('./src/composables/msg')['sendMsg']>
+    readonly setController: UnwrapRef<typeof import('./src/composables/controller')['setController']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>

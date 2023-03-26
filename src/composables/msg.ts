@@ -1,3 +1,4 @@
+import type { AxiosProgressEvent } from 'axios'
 import { send } from '~/api'
 
 export const isTypeWriter = useStorage('isTypeWriter', true)
@@ -13,21 +14,14 @@ export const sendMsg = async (msg: string) => {
     loading: true,
   })
   try {
-    const res = await send(msg)
-    if (!isTypeWriter.value) {
-      msgList.value[msgList.value.length - 1].receive = res.data.message
-      return
-    }
-    for (let i = 0; i < res.data.message.length; i++) {
-      // 打字机效果
-      await new Promise((resolve) => {
-        setTimeout(() => {
-          msgList.value[msgList.value.length - 1].receive += res.data.message[i]
-          resolve('')
-        }, 20)
-      },
-      )
-    }
+    setController(new AbortController())
+    const res = await send(msg, (progressEvent: AxiosProgressEvent) => {
+      const data = progressEvent.event.target.response
+      if (isTypeWriter.value)
+        msgList.value[msgList.value.length - 1].receive = data
+    }, getController())
+    if (!isTypeWriter.value)
+      msgList.value[msgList.value.length - 1].receive = res.data
   }
   catch (error: any) {
     msgList.value[msgList.value.length - 1].receive = `error: ${error?.toString()}`

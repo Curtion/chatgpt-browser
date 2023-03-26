@@ -1,5 +1,6 @@
 interface msg {
   send: string
   receive: string
-  loading: boolean
+  loading: boolean,
+  controller?: AbortController
 }

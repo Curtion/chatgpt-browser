@@ -1,7 +1,7 @@
 import axios from 'axios'
 export const request = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
-  timeout: 20000,
+  timeout: 600000,
 })
 
 request.interceptors.request.use(
@@ -25,6 +25,8 @@ request.interceptors.response.use(
       userInfo.value.token = ''
     }
     else {
+      if (error.code === 'ERR_CANCELED')
+        return
       showToast('请求失败，请稍后再试!')
     }
     return Promise.reject(error)
