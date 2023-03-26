@@ -67,7 +67,8 @@ async function handleDelMsg() {
     >
     <div
       text-xl
-      :class="[isSending ? 'i-carbon-close-outline' : 'i-carbon-send', isSending ? 'hover:cursor-no-drop' : 'hover:cursor-pointer']"
+      i-carbon-send
+      :class="[isSending ? 'hover:cursor-no-drop' : 'hover:cursor-pointer']"
       @click="handleSendMsg"
     />
   </div>
