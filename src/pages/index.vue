@@ -69,6 +69,7 @@ watch(msgList, () => {
       class="inner-box"
       px-5
       py-3
+      rounded-md
     >
       <div mb-2 c-blueGray>
         {{ item.send }}

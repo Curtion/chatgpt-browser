@@ -1,14 +1,5 @@
 @charset "utf-8";
 
-/* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
-html {
-  color: #333;
-  background: #fff;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  text-rendering: optimizelegibility;
-}
-
 /* 如果你的项目仅支持 IE9+ | Chrome | Firefox 等，推荐在 <html> 中添加 .borderbox 这个 class */
 html.borderbox *, html.borderbox *:before, html.borderbox *:after {
   -moz-box-sizing: border-box;
@@ -178,6 +169,7 @@ pre {
   padding: 1em 1.5em;
   display: block;
   -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
 }
 
 /* 一致化 horizontal rule */
@@ -238,13 +230,6 @@ strong, b {
 .typo p, .typo pre, .typo ul, .typo ol, .typo dl, .typo form, .typo hr, .typo table,
 .typo-p, .typo-pre, .typo-ul, .typo-ol, .typo-dl, .typo-form, .typo-hr, .typo-table, blockquote {
   margin-bottom: 0em
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
-  font-weight: 100;
-  color: #000;
-  line-height: 1.35;
 }
 
 /* 标题应该更贴紧内容，并与其他块区分，margin 值要相应做优化 */
