@@ -163,6 +163,11 @@ pre, code, pre tt {
   font-family: Courier, 'Courier New', monospace;
 }
 
+html.dark pre {
+  background: #121212;
+  border: 1px solid #121212;
+}
+
 pre {
   background: #f8f8f8;
   border: 1px solid #ddd;
