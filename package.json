@@ -3,7 +3,7 @@
   "packageManager": "pnpm@7.12.0",
   "scripts": {
     "build": "vite build",
-    "dev": "vite --port 3333 --open --host",
+    "dev": "vite --port 3333 --host",
     "lint": "eslint .",
     "typecheck": "vue-tsc --noEmit",
     "preview": "vite preview",
@@ -21,6 +21,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.35.2",
     "@iconify-json/carbon": "^1.1.15",
+    "@tauri-apps/cli": "^1.2.3",
     "@types/marked": "^4.0.8",
     "@types/node": "^18.14.0",
     "@unocss/reset": "^0.49.8",
