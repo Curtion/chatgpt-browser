@@ -1,17 +1,17 @@
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
-import TheCounter from '../src/components/TheCounter.vue'
+import TheFooter from '../src/components/TheFooter.vue'
 
-describe('TheCounter.vue', () => {
+describe('TheFooter.vue', () => {
   it('should render', () => {
-    const wrapper = mount(TheCounter, { props: { initial: 10 } })
-    expect(wrapper.text()).toContain('10')
+    const wrapper = mount(TheFooter)
+    expect(wrapper.text()).toContain('2023')
     expect(wrapper.html()).toMatchSnapshot()
   })
 
   it('should be interactive', async () => {
-    const wrapper = mount(TheCounter, { props: { initial: 0 } })
-    expect(wrapper.text()).toContain('0')
+    const wrapper = mount(TheFooter)
+    expect(wrapper.text()).toContain('2023')
 
     expect(wrapper.find('.inc').exists()).toBe(true)
 
