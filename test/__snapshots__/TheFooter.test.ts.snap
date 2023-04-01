@@ -1,6 +1,14 @@
 // Vitest Snapshot v1
 
-exports[`TheFooter.vue > should render 1`] = `
+exports[`TheFooter.vue > 发送信息测试 1`] = `
+"<div w-full=\\"\\" px-1=\\"\\" sm:w-screen-sm=\\"\\" sm:px-0=\\"\\" md:w-screen-md=\\"\\" md:px-0=\\"\\" lg:w-screen-lg=\\"\\" lg:px-0=\\"\\" m-auto=\\"\\" h-12=\\"\\" flex=\\"\\" justify-center=\\"\\" items-center=\\"\\" gap-2=\\"\\">
+  <div text-xl=\\"\\" hover:cursor-pointer=\\"\\" i-carbon-trash-can=\\"\\" class=\\"hover:cursor-no-drop\\"></div><input id=\\"input\\" type=\\"text\\" p=\\"x-4\\" bg=\\"transparent\\" w=\\"full\\" h=\\"full\\" max-w-screen-lg=\\"\\" border=\\"~ rounded gray-200 dark:gray-700\\" outline=\\"none active:none\\" placeholder=\\"请输入内容\\">
+  <div text-xl=\\"\\" class=\\"i-carbon-close-outline\\" hover:cursor-pointer=\\"\\"></div>
+</div>
+<div h-8=\\"\\" mt-2=\\"\\" shadow=\\"\\" flex=\\"\\" justify-center=\\"\\" items-center=\\"\\" text-xs=\\"\\"> ©竹影流浪 2014-2023 </div>"
+`;
+
+exports[`TheFooter.vue > 渲染 1`] = `
 "<div w-full=\\"\\" px-1=\\"\\" sm:w-screen-sm=\\"\\" sm:px-0=\\"\\" md:w-screen-md=\\"\\" md:px-0=\\"\\" lg:w-screen-lg=\\"\\" lg:px-0=\\"\\" m-auto=\\"\\" h-12=\\"\\" flex=\\"\\" justify-center=\\"\\" items-center=\\"\\" gap-2=\\"\\">
   <div text-xl=\\"\\" hover:cursor-pointer=\\"\\" i-carbon-trash-can=\\"\\" class=\\"hover:cursor-pointer\\"></div><input id=\\"input\\" type=\\"text\\" p=\\"x-4\\" bg=\\"transparent\\" w=\\"full\\" h=\\"full\\" max-w-screen-lg=\\"\\" border=\\"~ rounded gray-200 dark:gray-700\\" outline=\\"none active:none\\" placeholder=\\"请输入内容\\">
   <div text-xl=\\"\\" class=\\"i-carbon-send\\" hover:cursor-pointer=\\"\\"></div>
