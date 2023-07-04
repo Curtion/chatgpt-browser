@@ -1,5 +1,5 @@
 import type { AxiosProgressEvent } from 'axios'
-import { send } from '~/api'
+import { del, send } from '~/api'
 
 export const isTypeWriter = useStorage('isTypeWriter', true)
 
@@ -29,4 +29,11 @@ export const sendMsg = async (msg: string) => {
   finally {
     msgList.value[msgList.value.length - 1].loading = false
   }
+}
+
+export const forceClearMsg = async () => {
+  getController().abort('取消请求~')
+  const res = await del()
+  msgList.value = []
+  showToast(res.data.message)
 }

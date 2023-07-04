@@ -18,6 +18,9 @@ watchEffect(() => {
       <button icon-btn text-xl @click="toggleDark()">
         <div dark:i-carbon-moon i-carbon-sun />
       </button>
+      <button ml-3 icon-btn text-xl @click="forceClearMsg()">
+        <div i-carbon-rule-cancelled />
+      </button>
       <button ml-3 icon-btn text-xl @click="toggleTypeWriter()">
         <div :class="[isTypeWriter ? 'i-carbon-automatic' : 'i-carbon-stop-filled']" />
       </button>

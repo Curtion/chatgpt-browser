@@ -77,7 +77,7 @@ watch(msgList, () => {
       py-3
       rounded-md
     >
-      <div mb-2 c-blueGray flex items-center class="send">
+      <div mb-2 c-blueGray flex items-center flex-wrap class="send">
         <div>{{ item.send }}</div>
         <div hover:cursor-pointer hover:underline-solid ml-2 i-carbon-restart @click="sendMsg(item.send)" />
       </div>
